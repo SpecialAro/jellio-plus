@@ -22,6 +22,7 @@ namespace Jellyfin.Plugin.Jellio.Controllers;
 [Route("jellio/{config}")]
 [Produces(MediaTypeNames.Application.Json)]
 public class AddonController(
+    IUserManager userManager,
     IUserViewManager userViewManager,
     IDtoService dtoService,
     ILibraryManager libraryManager
@@ -216,6 +217,13 @@ public class AddonController(
         {
             Fields = [ItemFields.ProviderIds, ItemFields.Overview, ItemFields.Genres],
         };
+        
+        var user = userManager.GetUserById(userId);
+        if (user == null)
+        {
+            return Unauthorized();
+        }
+        
         var query = new InternalItemsQuery(user)
         {
             Recursive = true, // need this for search to work
@@ -252,6 +260,12 @@ public class AddonController(
         if (item == null)
         {
             return NotFound();
+        }
+
+        var user = userManager.GetUserById(userId);
+        if (user == null)
+        {
+            return Unauthorized();
         }
 
         var dtoOptions = new DtoOptions
@@ -315,7 +329,13 @@ public class AddonController(
     {
         var userId = (Guid)HttpContext.Items["JellioUserId"]!;
 
-        var query = new InternalItemsQuery(userId)
+        var user = userManager.GetUserById(userId);
+        if (user == null)
+        {
+            return Unauthorized();
+        }
+
+        var query = new InternalItemsQuery(user)
         {
             HasAnyProviderId = new Dictionary<string, string> { ["Imdb"] = $"tt{imdbId}" },
             IncludeItemTypes = [BaseItemKind.Movie],
@@ -335,7 +355,13 @@ public class AddonController(
     {
         var userId = (Guid)HttpContext.Items["JellioUserId"]!;
 
-        var seriesQuery = new InternalItemsQuery(userId)
+        var user = userManager.GetUserById(userId);
+        if (user == null)
+        {
+            return Unauthorized();
+        }
+
+        var seriesQuery = new InternalItemsQuery(user)
         {
             IncludeItemTypes = [BaseItemKind.Series],
             HasAnyProviderId = new Dictionary<string, string> { ["Imdb"] = $"tt{imdbId}" },
@@ -349,7 +375,7 @@ public class AddonController(
 
         var seriesIds = seriesItems.Select(s => s.Id).ToArray();
 
-        var episodeQuery = new InternalItemsQuery(userId)
+        var episodeQuery = new InternalItemsQuery(user)
         {
             IncludeItemTypes = [BaseItemKind.Episode],
             AncestorIds = seriesIds,
