@@ -1,6 +1,5 @@
 import { ThemeProvider } from '@/components/themeProvider';
 import useServerInfo from '@/hooks/useServerInfo.ts';
-import { getBaseUrl } from '@/lib/utils';
 import ConfigFormPage from '@/pages/ConfigFormPage';
 
 function App() {
@@ -11,11 +10,22 @@ function App() {
   }
 
   if (serverInfo === null) {
-    const jellyfinUrl = getBaseUrl().split('/jellio')[0];
-    window.location.replace(
-      `${jellyfinUrl}/web/#/login.html?url=%2Fjellio`,
+    return (
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <div style={{ 
+          display: 'flex', 
+          flexDirection: 'column', 
+          alignItems: 'center', 
+          justifyContent: 'center', 
+          height: '100vh',
+          padding: '20px',
+          textAlign: 'center'
+        }}>
+          <h1>Authentication Required</h1>
+          <p>No Jellyfin credentials found. Please log in to Jellyfin and try again.</p>
+        </div>
+      </ThemeProvider>
     );
-    return null;
   }
 
   return (
