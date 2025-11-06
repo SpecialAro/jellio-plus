@@ -15,24 +15,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'npm'
-          cache-dependency-path: jellio-web/package-lock.json
-
-      - name: Install Frontend Dependencies
-        working-directory: jellio-web
-        run: npm ci
-
-      - name: Build Frontend Single‑File
-        working-directory: jellio-web
-        run: npm run build
-
-      - name: Copy Frontend Bundle to Plugin Web
-        run: cp jellio-web/dist/index.html Jellyfin.Plugin.Jellio/Web/config.html
-
       - name: Setup .NET 8
         uses: actions/setup-dotnet@v4
         with:
