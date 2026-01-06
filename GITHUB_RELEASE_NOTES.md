@@ -19,4 +19,4 @@ Download `jellio_1.1.0.0.zip` and upload it via Jellyfin Admin Dashboard > Plugi
 
 ---
 
-**Checksum (MD5)**: `34e6ce3ada0f46e5d89d0968b29c78fa`
+**Checksum (MD5)**: `a5a403fd2d3218c949c2790ad980aaf0`
