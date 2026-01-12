@@ -9,11 +9,11 @@
         "versions": [
             {
                 "version": "1.4.1.0",
-                "changelog": "Make logs viewer always visible as collapsible box on settings page",
+                "changelog": "**Full Changelog**: https://github.com/InfiniteAvenger/jellio-plus/compare/v1.4.0...v1.4.1",
                 "targetAbi": "10.11.0.0",
                 "sourceUrl": "https://github.com/InfiniteAvenger/jellio-plus/releases/download/v1.4.1/jellio_1.4.1.0.zip",
-                "checksum": "69df67711b9dbedce1b3e07c8c7c276c",
-                "timestamp": "2026-01-12T00:45:27Z"
+                "checksum": "577d45bd722a786122e2e0f6f9dc7666",
+                "timestamp": "2026-01-12T01:08:26Z"
             },
             {
                 "version": "1.4.0.0",
