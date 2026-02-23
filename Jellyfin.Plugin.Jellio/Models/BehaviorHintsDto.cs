@@ -4,7 +4,15 @@ namespace Jellyfin.Plugin.Jellio.Models;
 
 public class BehaviorHintsDto
 {
-    [JsonPropertyName("notWebReady")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public bool NotWebReady { get; set; }
+    [JsonPropertyName("filename")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? Filename { get; set; }
+
+    [JsonPropertyName("videoHash")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? VideoHash { get; set; }
+
+    [JsonPropertyName("videoSize")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public long? VideoSize { get; set; }
 }

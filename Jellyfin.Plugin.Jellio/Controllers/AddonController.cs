@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Mime;
@@ -202,7 +203,9 @@ public class AddonController : ControllerBase
                     Description = source.Name,
                     BehaviorHints = new BehaviorHintsDto
                     {
-                        NotWebReady = true,
+                        Filename = string.IsNullOrEmpty(source.Path) ? null : Path.GetFileName(source.Path),
+                        VideoSize = source.Size,
+                        VideoHash = OpenSubtitlesHash.ComputeFromPath(source.Path),
                     },
                 };
             });
