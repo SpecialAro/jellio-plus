@@ -8,6 +8,14 @@
         "category": "General",
         "versions": [
             {
+                "version": "1.4.0.2",
+                "changelog": "**Full Changelog**: https://github.com/SpecialAro/jellio-plus/compare/v1.4.0.1...v1.4.0.2",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/SpecialAro/jellio-plus/releases/download/v1.4.0.2/jellio_1.4.0.2.zip",
+                "checksum": "12ab50ddf6155c59e84f92c9155213c3",
+                "timestamp": "2026-02-24T14:02:25Z"
+            },
+            {
                 "version": "1.4.0.1",
                 "changelog": "**Full Changelog**: https://github.com/SpecialAro/jellio-plus/compare/v1.4.0...v1.4.0.1",
                 "targetAbi": "10.11.0.0",
