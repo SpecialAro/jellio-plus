@@ -203,6 +203,7 @@ public class AddonController : ControllerBase
                     Description = source.Name,
                     BehaviorHints = new BehaviorHintsDto
                     {
+                        NotWebReady = true,
                         Filename = string.IsNullOrEmpty(source.Path) ? null : Path.GetFileName(source.Path),
                         VideoSize = source.Size,
                         VideoHash = OpenSubtitlesHash.ComputeFromPath(source.Path),
